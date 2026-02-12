@@ -2,6 +2,7 @@ import 'package:fitness_app/app/design/design_tokens.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:rive/rive.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -159,11 +160,7 @@ class _DailyChallangeCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(DT.s5),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [DT.challangeGradientStart, DT.challangeGradientEnd],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+        color: DT.bgWhite,
         borderRadius: BorderRadius.circular(DT.rCard),
         boxShadow: [
           BoxShadow(
@@ -245,6 +242,24 @@ class _DailyChallangeCard extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+          SizedBox(
+            width: 120,
+            height: 120,
+            child: RiveWidgetBuilder(
+              fileLoader: FileLoader.fromAsset(
+                'assets/images/animation.riv',
+                riveFactory: Factory.rive,
+              ),
+              builder: (context, state) => switch (state) {
+                RiveLoading() => const CircularProgressIndicator(),
+                RiveFailed() => Text('Failed to load animation'),
+                RiveLoaded() => RiveWidget(
+                  controller: state.controller,
+                  fit: Fit.contain,
+                ),
+              },
             ),
           ),
         ],

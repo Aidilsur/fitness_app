@@ -1,4 +1,5 @@
 import 'package:fitness_app/app/features/home/presentation/home_page.dart';
+import 'package:fitness_app/app/features/profile/presentation/profile.dart';
 import 'package:fitness_app/app/features/session/presentation/session.dart';
 import 'package:fitness_app/shared/widgets/nav/bottom_nav.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +39,8 @@ GoRouter buildRouter() {
               GoRoute(
                 path: '/profile',
                 name: AppRoute.profile.name,
-                pageBuilder: (c, s) => const NoTransitionPage(
-                  child: Scaffold(body: Center(child: Text('Profile'))),
-                ),
+                pageBuilder: (c, s) =>
+                    const NoTransitionPage(child: ProfilePage()),
               ),
             ],
           ),
