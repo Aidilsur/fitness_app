@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: _PlanCard(
+                    child: PlanCard(
                       color: DT.cardYellow,
                       difficulty: 'Medium',
                       title: 'Yoga Group',
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   SizedBox(width: DT.s4),
                   Expanded(
-                    child: _PlanCard(
+                    child: PlanCard(
                       color: DT.cardBlue,
                       difficulty: 'Light',
                       title: 'Balance',
@@ -366,7 +366,7 @@ class _WeeklyListComponent extends StatelessWidget {
   }
 }
 
-class _PlanCard extends StatelessWidget {
+class PlanCard extends StatelessWidget {
   final Color color;
   final String difficulty;
   final String title;
@@ -378,7 +378,7 @@ class _PlanCard extends StatelessWidget {
   final bool isLeft;
   final VoidCallback onTap;
 
-  const _PlanCard({
+  const PlanCard({
     super.key,
     required this.color,
     required this.difficulty,
